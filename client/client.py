@@ -30,6 +30,7 @@ f = Fernet(key)
 
 def listen_for_messages():
     global f
+    global s
     while True:
         message = s.recv(1024)
         try:
@@ -37,7 +38,8 @@ def listen_for_messages():
             print(message.decode())
         except Exception as e:
             print(colored(f'[!] Error: {e}'))
-            exit()
+            print('Wrong decryption key.')
+            print('Please, type "q" to quit.')
 
 
 t = Thread(target=listen_for_messages)
