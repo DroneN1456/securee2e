@@ -55,5 +55,4 @@ while True:
     msg = f.encrypt(msg.encode())
     s.send(msg)
 
-
 s.close()

@@ -8,6 +8,13 @@ from threading import Thread
 version = '1.0.0'
 
 config = configparser.ConfigParser()
+if (not os.path.exists('./config.ini')):
+    with open('./config.ini', 'w') as file:
+        config['GENERAL'] = {
+            "SERVER_HOST": '0.0.0.0',
+            "SERVER_PORT": '5002'
+        }
+        config.write(file)
 config.read('config.ini')
 
 SERVER_HOST = str(config['GENERAL']['SERVER_HOST'])
